@@ -131,13 +131,18 @@ const sortedEmployees = [...filteredEmployees].sort((a, b) => {
         return;
       }
 
-      if (editingId !== null) {
-        await employeeApi.put(`/${editingId}`, employee);
-      } else {
-//         await employeeApi.post("", employee);
-//            await employeeApi.post("/employees", employee);
-              await employeeApi.put(`/employees/${editingId}`, employee);
-      }
+//       if (editingId !== null) {
+//         await employeeApi.put(`/${editingId}`, employee);
+//       } else {
+// //         await employeeApi.post("", employee);
+// //            await employeeApi.post("/employees", employee);
+//               await employeeApi.put(`/employees/${editingId}`, employee);
+//       }
+  if (editingId !== null && editingId !== undefined) {
+    await employeeApi.put(`/employees/${editingId}`, employee);
+  } else {
+    await employeeApi.post("/employees", employee);
+  }
 
       setFormData({
         name: "",
@@ -170,6 +175,8 @@ const sortedEmployees = [...filteredEmployees].sort((a, b) => {
     });
 
     setEditingId(employee.id);
+    console.log("Editing employee:", employee);
+    console.log("Employee ID:", employee.id);
 
     window.scrollTo({
       top: 0,
