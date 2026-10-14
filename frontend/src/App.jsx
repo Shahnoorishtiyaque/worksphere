@@ -107,7 +107,7 @@ const sortedEmployees = [...filteredEmployees].sort((a, b) => {
     }));
   }
 
-  // POST: Create employee
+
   // PUT: Update employee
   async function handleSubmit(event) {
     event.preventDefault();
@@ -134,7 +134,9 @@ const sortedEmployees = [...filteredEmployees].sort((a, b) => {
       if (editingId !== null) {
         await employeeApi.put(`/${editingId}`, employee);
       } else {
-        await employeeApi.post("", employee);
+//         await employeeApi.post("", employee);
+//            await employeeApi.post("/employees", employee);
+              await employeeApi.put(`/employees/${editingId}`, employee);
       }
 
       setFormData({
@@ -186,8 +188,8 @@ const sortedEmployees = [...filteredEmployees].sort((a, b) => {
     try {
       setError("");
 
-      await employeeApi.delete(`/${id}`);
-
+//       await employeeApi.delete(`/${id}`);
+         await employeeApi.delete(`/employees/${id}`);
       await fetchEmployees();
     } catch (err) {
       console.error("Error deleting employee:", err);
