@@ -18,7 +18,7 @@ public class CorsConfig {
                         .allowedOrigins(
                                 "http://localhost:5173",
                                 "http://localhost:5174",
-                                "https://worksphere-phi-smoky.vercel.app"
+                                "https://worksphere-shahnoorishtiyaque.vercel.app"
                         )
                         .allowedMethods(
                                 "GET",
