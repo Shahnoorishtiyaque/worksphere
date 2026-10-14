@@ -215,29 +215,24 @@ th {
 .clear-button:hover {
   background: #475569;
 }
-
-@media (max-width: 700px) {
-  .employee-filters {
-    grid-template-columns: 1fr;
-  }
-}
-
 /* ========================================
-   RESPONSIVE DESIGN: TABLETS AND MOBILE
+   RESPONSIVE DESIGN
 ======================================== */
 
-/* Prevent unwanted horizontal overflow */
 * {
   box-sizing: border-box;
 }
 
 html,
-body {
+body,
+#root {
   width: 100%;
+  min-height: 100%;
   margin: 0;
 }
 
 body {
+  min-width: 320px;
   overflow-x: hidden;
 }
 
@@ -251,9 +246,12 @@ body {
   max-width: 1100px;
   margin: 30px auto;
   padding: 0 20px;
+  display: grid;
+  gap: 25px;
 }
 
-/* Dashboard cards */
+/* Dashboard */
+
 .dashboard {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -269,10 +267,15 @@ body {
   overflow-wrap: anywhere;
 }
 
-/* Search, sorting and department filters */
+/* Employee filters */
+
 .employee-filters {
   display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) auto;
+  grid-template-columns:
+    minmax(0, 2fr)
+    minmax(0, 1fr)
+    minmax(0, 1fr)
+    auto;
   gap: 12px;
   align-items: center;
   width: 100%;
@@ -285,7 +288,23 @@ body {
   max-width: 100%;
 }
 
-/* Keep wide employee tables inside their cards */
+/* Form controls */
+
+form {
+  width: 100%;
+  min-width: 0;
+}
+
+form input,
+form select,
+form textarea {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* Employee table */
+
 .table-wrapper {
   width: 100%;
   max-width: 100%;
@@ -304,7 +323,7 @@ td {
 }
 
 /* ========================================
-   TABLET: 768px AND BELOW
+   TABLETS: 481px–768px
 ======================================== */
 
 @media (max-width: 768px) {
@@ -349,6 +368,7 @@ td {
 
   .card {
     padding: 20px;
+    min-width: 0;
   }
 }
 
@@ -364,20 +384,24 @@ td {
   }
 
   .header {
+    width: 100%;
     padding: 22px 12px;
   }
 
   .header h1 {
     font-size: 23px;
+    overflow-wrap: anywhere;
   }
 
   .header p {
     font-size: 14px;
+    overflow-wrap: anywhere;
   }
 
-  /* Stack dashboard cards vertically */
+  /* Dashboard cards */
+
   .dashboard {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 12px;
   }
 
@@ -395,8 +419,10 @@ td {
     font-size: 22px;
   }
 
-  /* Compact form and employee list cards */
+  /* Cards and forms */
+
   .card {
+    width: 100%;
     padding: 16px;
     border-radius: 10px;
   }
@@ -411,7 +437,8 @@ td {
   }
 
   input,
-  .employee-filters select {
+  select,
+  textarea {
     font-size: 16px;
     padding: 12px;
   }
@@ -422,7 +449,8 @@ td {
     font-size: 14px;
   }
 
-  /* Stack filters on narrow screens */
+  /* Search and filters */
+
   .employee-filters {
     grid-template-columns: minmax(0, 1fr);
     gap: 10px;
@@ -436,6 +464,7 @@ td {
   .employee-filters select,
   .employee-filters button {
     width: 100%;
+    min-width: 0;
   }
 
   .employee-count {
@@ -443,9 +472,12 @@ td {
     line-height: 1.5;
   }
 
-  /* Allow horizontal scrolling inside the table only */
+  /* Scroll only the employee table horizontally */
+
   .table-wrapper {
+    width: 100%;
     margin-top: 12px;
+    overflow-x: auto;
     border-radius: 6px;
   }
 
@@ -474,4 +506,4 @@ td {
     font-size: 14px;
     line-height: 1.5;
   }
-}
+}}
