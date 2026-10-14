@@ -82,7 +82,8 @@ const sortedEmployees = [...filteredEmployees].sort((a, b) => {
     try {
       setError("");
 
-     const response = await employeeApi.get("");
+     const response = await employeeApi.get("/employees");
+//      const response = await employeeApi.get("");
       setEmployees(response.data);
     } catch (err) {
       console.error("Error fetching employees:", err);
